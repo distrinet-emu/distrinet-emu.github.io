@@ -1,0 +1,10 @@
+remote_theme: pmarsceill/just-the-docs
+search_enabled: true
+search_tokenizer_separator: /[\s/]+/
+title: Distrinet
+baseurl: "/"
+markdown: kramdown
+heading_anchors: true
+aux_links:
+  "Distrinet on GitHub":
+    - "//github.com/Giuseppe1992/Distrinet"
