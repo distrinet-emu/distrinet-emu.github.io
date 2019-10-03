@@ -261,7 +261,7 @@ After some seconds we are able to run pingall from mininet CLI.
  
  Type "exit" to conclude the experiment.
  
- # Warning
+# Warning READ CAREFULLY
  
  Exit distrinet will not remove your Aws environment,so you will continue to pay for the instances you created.
  You can destroy the virtual instances manually or using the command:
