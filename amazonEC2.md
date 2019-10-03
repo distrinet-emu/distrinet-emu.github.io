@@ -16,20 +16,12 @@ In order to successfully install and run Distrinet on Amazon EC2, ensure your sy
 Distrinet is compatible with python 3.6 or grater versions.
 
 You need:
+* to have distrinet installed in your machine (or via docker), if not please follow these [instructions](https://distrinet-emu.github.io/installation.html)
 * an Amazon AWS account [link](https://aws.amazon.com/)
+* a text editor, in this case we use vim
 
-* git
-```
-sudo apt install git
-```
-
-* pip
-```
-sudo apt install python3-pip
-```
-
-
-* You need to put your AWS Credentials in ~/.aws/credentials.
+# Configuration
+You need to put your AWS Credentials in ~/.aws/credentials.
 You can create your aws_access_key_id and aws_secret_access_key from the [AWS Web interface](https://aws.amazon.com/)
 ```
 mkdir ~/.aws
@@ -43,7 +35,7 @@ aws_access_key_id=XXXXXXXXXXXXXXXXX
 aws_secret_access_key=YYYYYYYYYYYYYYYYYYYYYY
 ```
 
-How to create aws_access_key_id and aws_secret_access_key via [AWS Web interface](https://aws.amazon.com/):
+## Create aws_access_key_id and aws_secret_access_key via [AWS Web interface](https://aws.amazon.com/):
 
 * Go to https://aws.amazon.com/ and log in
 ![alt text](images/Step1.png)
@@ -112,16 +104,9 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCsLyI2hW/uoiLqcJEnAnYufUge1LhnBevdVy29tI1r
 * "Import Key pair"
 ![alt text](images/Key3.png)
 
-* Choose the name that you want, in my case I choosed "DistrinetKeyGiuseppe"(you need to use this name after) and paste your id_rsa.pub in Public key contents and Import it.
+* Choose the name that you want, in my case I choosed "DistrinetKeyGiuseppe"(you need to use this name after) and paste your id_rsa.pub in "Public key contents" and Import it.
 ![alt text](images/Key4.png)
 
 * You can seen now that your key has been added
 ![alt text](images/Key5.png)
 
-
-## Prerequisite check
-To check your system for prerequisites, enter the following commands:
-
-# Installation
-
-# Testing the installation
