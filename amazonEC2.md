@@ -20,7 +20,7 @@ You need:
 * an Amazon AWS account [link](https://aws.amazon.com/)
 * a text editor, in this case we use vim
 
-# Configuration
+# AWS Configuration
 You need to put your AWS Credentials in ~/.aws/credentials.
 You can create your aws_access_key_id and aws_secret_access_key from the [AWS Web interface](https://aws.amazon.com/)
 ```
@@ -104,9 +104,127 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCsLyI2hW/uoiLqcJEnAnYufUge1LhnBevdVy29tI1r
 * "Import Key pair"
 ![alt text](images/Key3.png)
 
-* Choose the name that you want, in my case I choosed "DistrinetKeyGiuseppe"(you need to use this name after) and paste your id_rsa.pub in "Public key contents" and Import it.
+* Choose the name that you want, in my case I chose "DistrinetKeyGiuseppe"(you need to use this name after) and paste your id_rsa.pub in "Public key contents" and Import it.
 ![alt text](images/Key4.png)
 
 * You can seen now that your key has been added
 ![alt text](images/Key5.png)
 
+## Distrinet Configuration
+
+If you correctly installed distrinet, you have a configuration file in your home directory.
+You can open it with:
+```
+vim ~/.distrinet/conf.yml
+```
+The result should be similar to this:
+
+```
+
+---
+
+ssh:
+  pub_id: "YOUR PUBLIC ID"
+  user: "root"
+  client_keys: ["/Users/giuseppe/.ssh/id_rsa"]
+  bastion: "Bastion host IP 'xxx.xxx.xxx.xxx'"
+
+port_forwarding:
+  - local: 8181
+    proto: 'tcp'
+    ip: '192.168.0.250'
+    remote: 8181
+
+aws:
+  region: "eu-central-1"
+  user: "ubuntu"
+  image_name: "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-20190722.1"
+  key_name_aws: "id_rsa"
+  network_acl:
+    - IpProtocol: "-1"
+      FromPort: 1
+      ToPort: 65353
+      IpRanges:
+        - CidrIp: "0.0.0.0/0"
+
+g5k:
+  g5k_user: "your username"
+  g5k_password: "your password"
+  image_name: "ubuntu1804-x64-python3"
+  location: "nancy"
+  cluster: "grisou"
+
+cluster:
+  user: "root"
+```
+
+You hqve to modify 3 parameters for now:
+* ssh -> pub_id: you have to put same public key that you import in AWS in the previous step
+* ssh -> client_keys: you have to put in a list, the path of your private key
+* aws -> key_name_aws: here you have to put the keypair name you choose in the previous step.
+
+following the previous AWS Configuration, my configuration file is:
+
+```
+
+---
+
+ssh:
+  pub_id: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCsLyI2hW/uoiLqcJEnAnYufUge1LhnBevdVy29tI1r93KFcQrspE2LwuwWhVxtC4QdhIIcZ1nfN5zTIWhOkIUXEc3oZcu/JEMix+ygJXoW53/6gKC/hPqZPT+d2ahyoXw+zYqOjBp3VjhHG32jfQE5oGhU3nSTVrdPj3BEnJJ0o4WHyLiwRxv5z2aATS7b0ziYU2f3Zwdf3s+zJ54Ois6/c6TtTGI0B8p2zr4CrsK5pCaUnlW0/sgOsS98wAP1NjxDxPUak2cr8ZbMA7TWLUXO11HAZaW2qgqxImsg90Wf4RQkX5GesmTglSl0W/t3Jg+3Q4idX4PgRzPl4GAMvJp7 root@53942a77d770"
+  user: "root"
+  client_keys: ["/root/.ssh/id_rsa"]
+  bastion: "Bastion host IP 'xxx.xxx.xxx.xxx'"
+
+port_forwarding:
+  - local: 8181
+    proto: 'tcp'
+    ip: '192.168.0.250'
+    remote: 8181
+
+aws:
+  region: "eu-central-1"
+  user: "ubuntu"
+  image_name: "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-20190722.1"
+  key_name_aws: "DistrinetKeyGiuseppe"
+  network_acl:
+    - IpProtocol: "-1"
+      FromPort: 1
+      ToPort: 65353
+      IpRanges:
+        - CidrIp: "0.0.0.0/0"
+
+g5k:
+  g5k_user: "your username"
+  g5k_password: "your password"
+  image_name: "ubuntu1804-x64-python3"
+  location: "nancy"
+  cluster: "grisou"
+
+cluster:
+  user: "root"
+```
+
+## Test AWS configuration
+
+To run your first experiment, you need to move in mininet directory inside Distrinet.
+In this case Distrinet is in /Distrinet, so we can change directory with:
+```
+cd /Distrinet/mininet
+```
+
+if Distrinet is in your Home directory you can do:
+```
+cd ~/Distrinet/mininet
+```
+
+Make sure to have the :mininet: in your PYTHONPATH:
+```
+export PYTHONPATH=$PYTHONPATH:mininet:
+```
+
+run a simple experiment in AWS.
+```
+python3 bin/dmn --provision=aws --controller=lxcremote,ip=192.168.0.1
+```
+
+This will take around 5 minutes to create a new AWS deployment, with 2 AWS instances t3.2xlarge  
