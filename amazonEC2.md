@@ -91,7 +91,7 @@ root@53942a77d770:/home/Distrinet# cat ~/.ssh/id_rsa.pub
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCsLyI2hW/uoiLqcJEnAnYufUge1LhnBevdVy29tI1r93KFcQrspE2LwuwWhVxtC4QdhIIcZ1nfN5zTIWhOkIUXEc3oZcu/JEMix+ygJXoW53/6gKC/hPqZPT+d2ahyoXw+zYqOjBp3VjhHG32jfQE5oGhU3nSTVrdPj3BEnJJ0o4WHyLiwRxv5z2aATS7b0ziYU2f3Zwdf3s+zJ54Ois6/c6TtTGI0B8p2zr4CrsK5pCaUnlW0/sgOsS98wAP1NjxDxPUak2cr8ZbMA7TWLUXO11HAZaW2qgqxImsg90Wf4RQkX5GesmTglSl0W/t3Jg+3Q4idX4PgRzPl4GAMvJp7 root@53942a77d770
 ```
 
-#### import  your id_rsa.pub in AWS:
+### import  your id_rsa.pub in AWS:
 * Go to https://aws.amazon.com/ and log in like before;
 ![alt text](images/Step1.png)
 
@@ -110,7 +110,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCsLyI2hW/uoiLqcJEnAnYufUge1LhnBevdVy29tI1r
 * You can seen now that your key has been added
 ![alt text](images/Key5.png)
 
-## Distrinet Configuration
+# Distrinet Configuration
 
 If you correctly installed distrinet, you have a configuration file in your home directory.
 You can open it with:
@@ -204,7 +204,7 @@ cluster:
   user: "root"
 ```
 
-## Test AWS configuration
+# Test AWS configuration
 
 To run your first experiment, you need to move in mininet directory inside Distrinet.
 In this case Distrinet is in /Distrinet, so we can change directory with:
