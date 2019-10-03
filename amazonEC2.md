@@ -227,4 +227,14 @@ run a simple experiment in AWS.
 python3 bin/dmn --provision=aws --controller=lxcremote,ip=192.168.0.1
 ```
 
-This will take around 5 minutes to create a new AWS deployment, with 2 AWS instances t3.2xlarge  
+This will take around 5 minutes to create a new AWS deployment, with 2 AWS instances t3.2xlarge, qnd creqte a virtual network with 1 switch and 2 hosts
+
+If you want to create a different deployment you can give additional parameters to --provision.
+
+For example, this will create an AWS deployment with 3 t3.large instances with a volume of 10Gb:
+```
+python3 bin/dmn --provision=aws,3,instanceType=t3.large,volumeSize=10 --controller=lxcremote,ip=192.168.0.1
+```
+
+Distrinet in this case do not start automatically the controller, so you need to start manually in the master host.
+You can find the master host ip from AWS web interface.
