@@ -16,7 +16,7 @@ In order to successfully install and run Distrinet on Amazon EC2, ensure your sy
 Distrinet is compatible with python 3.6 or grater versions.
 
 You need:
-* to have distrinet installed in your machine (or via docker), if not please follow these [instructions](https://distrinet-emu.github.io/installation.html)
+* Distrinet installed in your machine (or in docker), if not please follow these [instructions](https://distrinet-emu.github.io/installation.html)
 * an Amazon AWS account [link](https://aws.amazon.com/)
 * a text editor, in this case we use vim
 
