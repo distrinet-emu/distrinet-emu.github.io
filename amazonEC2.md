@@ -158,7 +158,7 @@ cluster:
   user: "root"
 ```
 
-You hqve to modify 3 parameters for now:
+You have to modify 3 parameters for now:
 * ssh -> pub_id: you have to put same public key that you import in AWS in the previous step
 * ssh -> client_keys: you have to put in a list, the path of your private key
 * aws -> key_name_aws: here you have to put the keypair name you choose in the previous step.
