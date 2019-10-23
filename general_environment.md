@@ -25,21 +25,21 @@ We are using ubuntu 18.04 for this tutorial.
 2) Generate a ssh keypair in your Master and put the public id in ~/.ssh/authorized_keys file of master host and the worker hosts.
 
 3) Install ansible on your Master Host.
-    ```
-    sudo apt install ansible -y
-    ```
+```
+sudo apt install ansible -y
+```
 4) Configure ansible in your Master:
     1) vim /etc/ansible/hosts
     2) add the following lines
-    ```
-    [master]
-    127.0.0.1 ansible_connection=local ansible_python_interpreter=/usr/bin/python3
-    [workers]
-   ```
-    3) for each worker add the line
-   ```
-    WORKER_IP ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_python_interpreter=/usr/bin/python3
-   ```
+```
+[master]
+127.0.0.1 ansible_connection=local ansible_python_interpreter=/usr/bin/python3
+[workers]
+```
+   3) for each worker add the line
+```
+WORKER_IP ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_python_interpreter=/usr/bin/python3
+```
 5) check your ansible configuration:
     ```
     ansible all -m ping
