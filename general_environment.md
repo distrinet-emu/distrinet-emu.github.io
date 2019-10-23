@@ -46,8 +46,10 @@ sudo apt install ansible -y
 ```
     
 5) check your ansible configuration:
+
     ```
     ansible all -m ping
+    
     you should receive an answer from all the hosts.
     ```
     
