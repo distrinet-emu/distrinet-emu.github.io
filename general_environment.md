@@ -52,12 +52,14 @@ sudo apt install ansible -y
     ```
     
 6) copy the file install-lxd.yml and configure-lxd-no-clustering.yml in your master
+
     ```
     scp ~/Distrinet/mininet/mininet/provision/playbooks/install-lxd.yml USER@MASTER_IP:
     scp ~/Distrinet/mininet/mininet/provision/playbooks/configure-lxd-no-clustering.yml USER@MASTER_IP:
     ```
     
 7) connect to your Master host and run the playbooks with:
+
     ```
     ansible-playbook ~/install-lxd.yml
     ansible-playbook ~/configure-lxd-no-clustering.yml
