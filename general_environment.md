@@ -25,7 +25,6 @@ We are using ubuntu 18.04 for this tutorial.
 2) Generate a ssh keypair in your Master and put the public id in ~/.ssh/authorized_keys file of master host and the worker hosts.
 
 3) Install ansible on your Master Host.
-
     ```
     sudo apt install ansible -y
     ```
@@ -47,14 +46,11 @@ We are using ubuntu 18.04 for this tutorial.
     you should receive an answer from all the hosts.
     ```
 6) copy the file install-lxd.yml and configure-lxd-no-clustering.yml in your master
-
     ```
     scp ~/Distrinet/mininet/mininet/provision/playbooks/install-lxd.yml USER@MASTER_IP:
     scp ~/Distrinet/mininet/mininet/provision/playbooks/configure-lxd-no-clustering.yml USER@MASTER_IP:
     ```
-   
 7) connect to your Master host and run the playbooks with:
-
     ```
     ansible-playbook ~/install-lxd.yml
     ansible-playbook ~/configure-lxd-no-clustering.yml
@@ -75,27 +71,22 @@ From your Distrinet client.
     ```
     cd ~/Distrinet/mininet
     ```
-
 2) Make sure to have the :mininet: in your PYTHONPATH:
     ```
     export PYTHONPATH=$PYTHONPATH:mininet:
     ```
-
 3) run a simple experiment:
     ```
     python3 bin/dmn --bastion=MASTER_IP --workers="MASTER_IP,WORKER1_IP,WORKER2_IP" --controller=lxcremote,ip=192.168.0.1 --topo=linear,2
     ```
-
 4) Connect in your master host.
     ```
     ssh USER@MASTER_IP
     ```
-
 5) Once connected we can start ryu controller:
     ```
     ryu-manager /usr/lib/python2.7/dist-packages/ryu/app/simple_switch_13.py --verbose
     ```
-
 6) After some seconds we are able to run pingall from mininet CLI.
     ![alt text](images/pingall.png)
  
