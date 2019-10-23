@@ -31,15 +31,15 @@ sudo apt install ansible -y
 4) Configure ansible in your Master:
     1) vim /etc/ansible/hosts
     2) add the following lines
-```
-[master]
-127.0.0.1 ansible_connection=local ansible_python_interpreter=/usr/bin/python3
-[workers]
-```
-   3) for each worker add the line
-```
-WORKER_IP ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_python_interpreter=/usr/bin/python3
-```
+    ```
+    [master]
+    127.0.0.1 ansible_connection=local ansible_python_interpreter=/usr/bin/python3
+    [workers]
+    ```
+    3) for each worker add the line
+    ```
+    WORKER_IP ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_python_interpreter=/usr/bin/python3
+    ```
 5) check your ansible configuration:
     ```
     ansible all -m ping
@@ -68,25 +68,25 @@ You have to configure the "ssh" and "cluster" part. If you don't need aws, g5k o
 After the configuration you can start your first experiment.
 From your Distrinet client.
 1) Go in your Distrinet home
-    ```
+    
     cd ~/Distrinet/mininet
-    ```
+    
 2) Make sure to have the :mininet: in your PYTHONPATH:
-    ```
+    
     export PYTHONPATH=$PYTHONPATH:mininet:
-    ```
+    
 3) run a simple experiment:
-    ```
+    
     python3 bin/dmn --bastion=MASTER_IP --workers="MASTER_IP,WORKER1_IP,WORKER2_IP" --controller=lxcremote,ip=192.168.0.1 --topo=linear,2
-    ```
+    
 4) Connect in your master host.
-    ```
+    
     ssh USER@MASTER_IP
-    ```
+
 5) Once connected we can start ryu controller:
-    ```
+    
     ryu-manager /usr/lib/python2.7/dist-packages/ryu/app/simple_switch_13.py --verbose
-    ```
+    
 6) After some seconds we are able to run pingall from mininet CLI.
     ![alt text](images/pingall.png)
  
