@@ -77,7 +77,8 @@ You have to configure the "ssh" and "cluster" part. If you don't need aws, g5k o
     4) sss-->bastion: this is optional, is the default ip of your master host
 
 After the configuration you can start your first experiment.
-From your Distrinet client.
+From your Distrinet client:
+
 1) Go in your Distrinet home
     
     cd ~/Distrinet/mininet
