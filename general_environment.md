@@ -46,13 +46,12 @@ sudo apt install ansible -y
 ```
     
 5) check your ansible configuration:
+```
+ansible all -m ping
 
-    ```
-    ansible all -m ping
-    
-    you should receive an answer from all the hosts.
-    ```
-    
+you should receive an answer from all the hosts.
+```
+
 6) copy the file install-lxd.yml and configure-lxd-no-clustering.yml in your master
 
     
