@@ -12,7 +12,7 @@ G. Di Lena, A. Tomassilli, D. Saucez, F. Giroire, T. Turletti, and C. Lac: [**Mi
 Bibtex:
 
 ```
-@inproceedings{dilena2019mininet,
+@inproceedings{dilena2019Distrinet,
   title={Mininet on steroids: exploiting the cloud for Mininet performance},
   author={Di Lena, Giuseppe and Tomassilli, Andrea and Saucez, Damien and Giroire, Frederic and Turletti, Thierry and Lac, Chidung},
   booktitle={IEEE CloudNet 2019},
