@@ -246,7 +246,7 @@ If you try to do pingall or pingallfull, the host will not be able to ping, this
 Find the public ip of your deployment with AWS web interface.
  ![alt text](images/Public_ip.png)
 
-In this can connect with:
+In this case we can connect with:
 ```
 ssh root@3.124.70.157
 ```
