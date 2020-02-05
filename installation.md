@@ -11,6 +11,10 @@ You can install it directly on your machine or you can use docker(mandatory if y
 
 IMPORTANT: You need to install distrinet only on your Client machine.
 
+This is a typical Distrinet Scenario:
+ ![alt text](images/Distrinet_scenario.png)
+
+
 ## Installation in a Linux machine
 ### Prerequisites
 Make sure to have git, python3 and pip installed.
@@ -32,7 +36,7 @@ Now we start the real installation.
 Run 
 ```
 pip3 install -r requirements.txt
-python3 setup.py install
+sudo python3 setup.py install
 ```
 
 Update your PYTHONPATH with:
@@ -47,13 +51,15 @@ You should have a new folder (.distrinet) in your home directory.
 cd ~/.distrinet/
 ls -al
 
-giuseppe@MacBook-Pro-di-Giuseppe .distrinet % ls -la
-total 48
-drwxr-xr-x   7 giuseppe  staff   224  4 Feb 14:09 .
-drwxr-xr-x+ 85 giuseppe  staff  2720  5 Feb 13:37 ..
--rw-r--r--@  1 giuseppe  staff  1262 30 Gen 15:17 conf.yml
--rw-r--r--   1 giuseppe  staff   426 30 Gen 14:18 general_purpose.json
--rw-r--r--@  1 giuseppe  staff  1375 31 Gen 14:10 gros_partial.json
+ubuntu@client:~/Distrinet$ cd ~/.distrinet/
+ubuntu@client:~/.distrinet$ ls -al
+total 20
+drwxrwxr-x 2 ubuntu ubuntu 4096 Feb  5 14:58 .
+drwxr-xr-x 7 ubuntu ubuntu 4096 Feb  5 14:59 ..
+-rw-rw-r-- 1 ubuntu ubuntu  856 Feb  5 15:00 conf.yml
+-rw-rw-r-- 1 ubuntu ubuntu  426 Feb  5 15:00 general_purpose.json
+-rw-rw-r-- 1 ubuntu ubuntu 1375 Feb  5 15:00 gros_partial.json
+ubuntu@client:~/.distrinet$
 ```
 
 We will modify the conf.yml later
