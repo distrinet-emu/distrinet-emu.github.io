@@ -68,6 +68,9 @@ We provide a demo of Distrinet where we run a compute-intensive experiment compo
     </a>
 </p>
 
+#Other demos
+https://www.youtube.com/playlist?list=PLjv6t3T3klL7B6aYsu0y3QKXPwTpVm1S7
+
 # Publications
 
 * G. Di Lena, A. Tomassilli, D. Saucez, F. Giroire, T. Turletti, and C. Lac: [Mininet on steroids: exploiting the cloud for Mininet performance](). 2019 IEEE 8th International Conference on Cloud Networking (CloudNet)
