@@ -74,7 +74,8 @@ root@worker2:~$ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4auR5Gxae2aHx0Sde69
 
 
 To check that the configuration is ok, try to connect via ssh to the master and the hosts;
-in my case 
+
+In my case: 
 - master is at: 172.16.66.92
 - worker1 is at: 172.16.66.93
 - worker2 is at: 172.16.66.94
@@ -347,9 +348,11 @@ root@client:~/Distrinet/mininet# python3 bin/dmn --bastion=172.16.66.92 --worker
     
 
 Start ryu controller from your master host.
-    
+```
     ryu-manager /usr/lib/python3/dist-packages/ryu/app/simple_switch_13.py --verbose
-in my case
+```
+
+In my case
 ```
 root@master:~# ryu-manager /usr/lib/python3/dist-packages/ryu/app/simple_switch_13.py --verbose
 ```    
