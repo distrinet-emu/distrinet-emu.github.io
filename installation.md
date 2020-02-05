@@ -12,8 +12,8 @@ You can install it directly on your machine or you can use docker(mandatory if y
 IMPORTANT: You need to install distrinet only on your Client machine.
 
 This is a typical Distrinet Scenario:
- ![alt text](images/Distrinet_scenario.png)
 
+![alt text](images/Distrinet_scenario.png)
 
 ## Installation in a Linux machine
 ### Prerequisites

@@ -69,7 +69,7 @@ We provide a demo of Distrinet where we run a compute-intensive experiment compo
 </p>
 
 # Other demos
-https://www.youtube.com/playlist?list=PLjv6t3T3klL7B6aYsu0y3QKXPwTpVm1S7
+[Demos](https://www.youtube.com/playlist?list=PLjv6t3T3klL7B6aYsu0y3QKXPwTpVm1S7)
 
 # Publications
 
