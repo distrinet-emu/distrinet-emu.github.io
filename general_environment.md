@@ -353,10 +353,15 @@ Start ryu controller from your master host.
 ```
 
 In my case
+
+
 ```
 root@master:~# ryu-manager /usr/lib/python3/dist-packages/ryu/app/simple_switch_13.py --verbose
-```    
-6) After some seconds we are able to run pingall from mininet CLI.
-    ![alt text](images/pingall.png)
+```
+
+
+After some seconds we are able to run pingall from mininet CLI.
+
+![alt text](images/pingall.png)
  
 7) Type "exit" to conclude the experiment.
