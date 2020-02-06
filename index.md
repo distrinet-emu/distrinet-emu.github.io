@@ -79,7 +79,7 @@ We provide a demo of Distrinet where we run a compute-intensive experiment compo
 # Contributing
 
 When contributing to this repository, please first discuss the change you wish to make via issue,
-email, or any other method with the owners of this repository before making a change. Read more about becoming a contributor in [our GitHub repo](https://github.com/Giuseppe1992/Distrinet/tree/master/CONTRIBUTING.rst).
+email, or any other method with the owners of this repository before making a change. Read more about becoming a contributor in [our GitHub repo](https://github.com/Giuseppe1992/Distrinet/).
 
 # Acknowledgments
 
