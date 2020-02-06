@@ -280,7 +280,7 @@ The configuration file is at ~/.distrinet/conf.yml if you correctly installed di
 You have to configure the "ssh" and "cluster" part. If you don't need aws, g5k or port forwarding you can remove the from the file.
 
     1) ssh-->pub_id: you have to put your public key(the one that you created in the client host). 
-    2) ssh-->user: the user that you use to connecto with the master and the slaves (it is better to use root).
+    2) ssh-->user: the user that you use to connec to with the master and the slaves (use root for this version of distrinet).
     3) ssh-->client_keys: the path of the private key
     4) sss-->bastion: this is optional, is the default ip of your master host
    
@@ -296,9 +296,9 @@ ubuntu@client:~/Distrinet/mininet# cat ~/.distrinet/conf.yml
 ---
 
 ssh:
-  pub_id: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4auR5Gxae2aHx0Sde69c1tJiFFWNx0DlAN+pJNkmT/wGyIfntMBWAL6qVrfJOSSFbmBu8crFQbI9Ouay+TsP2Ni0gVg1e9G8r6O4BCOsTD6N/vb/v3BZ7II/RsHoZC5mdiTySPuQTAM7dTxD7YpgMxUtUI+FyZqpaEKCcfB66LZmmEhMlAYYDtZHKZcgaTfO04nw9DYEymxWKkQzoxxTAfQeGKKgobyspdboTH8PkSXjq4un/RoaeKfjAT9HdCGVFuvpO/JRzewb6ze7wTET9ntWjDKoi8lFoPO09nrQCLsJ6cxLBgIZaGw/B5eFl6XBjfpmO/kfyNxQt9zHaM+Yn root@client"
+  pub_id: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4auR5Gxae2aHx0Sde69c1tJiFFWNx0DlAN+pJNkmT/wGyIfntMBWAL6qVrfJOSSFbmBu8crFQbI9Ouay+TsP2Ni0gVg1e9G8r6O4BCOsTD6N/vb/v3BZ7II/RsHoZC5mdiTySPuQTAM7dTxD7YpgMxUtUI+FyZqpaEKCcfB66LZmmEhMlAYYDtZHKZcgaTfO04nw9DYEymxWKkQzoxxTAfQeGKKgobyspdboTH8PkSXjq4un/RoaeKfjAT9HdCGVFuvpO/JRzewb6ze7wTET9ntWjDKoi8lFoPO09nrQCLsJ6cxLBgIZaGw/B5eFl6XBjfpmO/kfyNxQt9zHaM+Yn ubuntu@client"
   user: "root"
-  client_keys: ["/root/.ssh/id_rsa"]
+  client_keys: ["/home/ubuntu/.ssh/id_rsa"]
   bastion: "Bastion host IP 'xxx.xxx.xxx.xxx'"
 
 aws:
