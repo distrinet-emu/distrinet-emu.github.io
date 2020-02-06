@@ -47,18 +47,25 @@ export PYTHONPATH=$PYTHONPATH:mininet:
 ### Check the configuration directory
 You should have a new folder (.distrinet) in your home directory.
 
+If you are not the root user, add the permission to access this folder.
+in my case:
+```
+ubuntu@client: sudo chmod -R 777 ~/.distrinet
+```
+
+Check that the folder exist:
 ```
 cd ~/.distrinet/
 ls -al
 
-ubuntu@client:~/Distrinet$ cd ~/.distrinet/
+ubuntu@client:~/.distrinet$ cd ~/.distrinet/
 ubuntu@client:~/.distrinet$ ls -al
 total 20
-drwxrwxr-x 2 ubuntu ubuntu 4096 Feb  5 14:58 .
-drwxr-xr-x 7 ubuntu ubuntu 4096 Feb  5 14:59 ..
--rw-rw-r-- 1 ubuntu ubuntu  856 Feb  5 15:00 conf.yml
--rw-rw-r-- 1 ubuntu ubuntu  426 Feb  5 15:00 general_purpose.json
--rw-rw-r-- 1 ubuntu ubuntu 1375 Feb  5 15:00 gros_partial.json
+drwxrwxrwx 2 root   root   4096 Feb  6 10:45 .
+drwxr-xr-x 8 ubuntu ubuntu 4096 Feb  6 10:45 ..
+-rwxrwxrwx 1 root   root   1144 Feb  6 10:45 conf.yml
+-rwxrwxrwx 1 root   root    426 Feb  6 09:54 general_purpose.json
+-rwxrwxrwx 1 root   root   1375 Feb  6 09:54 gros_partial.json
 ubuntu@client:~/.distrinet$
 ```
 
