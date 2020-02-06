@@ -23,16 +23,16 @@ We are using ubuntu 18.04 for this tutorial.
 
 1) Generate a ssh keypair (if you don't have one) in your Distrinet Client and put the public id in ~/.ssh/authorized_keys file of the master host and the worker hosts.
 ```
-root@client:~$ ssh-keygen
+ubuntu@client:~$ ssh-keygen
 Generating public/private rsa key pair.
-Enter file in which to save the key (/root/.ssh/id_rsa):
-Created directory '/root/.ssh'.
+Enter file in which to save the key (/home/ubuntu/.ssh/id_rsa):
+Created directory '/home/ubuntu/.ssh'.
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
-Your identification has been saved in /root/.ssh/id_rsa.
-Your public key has been saved in /root/.ssh/id_rsa.pub.
+Your identification has been saved in /home/ubuntu/.ssh/id_rsa.
+Your public key has been saved in /home/ubuntu/.ssh/id_rsa.pub.
 The key fingerprint is:
-SHA256:oDZWlqHezJXU6ET1+rbXXXXXXXXXXXXXXXXXXXXX root@client
+SHA256:oDZWlqHezJXU6ET1+rbXXXXXXXXXXXXXXXXXXXXX ubuntu@client
 The key's randomart image is:
 +---[RSA 2048]----+
 |^B    ..o+.      |
@@ -45,13 +45,13 @@ The key's randomart image is:
 |        .  .o.   |
 |            o.   |
 +----[SHA256]-----+
-root@client:~$
-root@client:~$ cat .ssh/id_rsa.pub
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4auR5Gxae2aHx0Sde69c1tJiFFWNx0DlAN+pJNkmT/wGyIfntMBWAL6qVrfJOSSFbmBu8crFQbI9Ouay+TsP2Ni0gVg1e9G8r6O4BCOsTD6N/vb/v3BZ7II/RsHoZC5mdiTySPuQTAM7dTxD7YpgMxUtUI+FyZqpaEKCcfB66LZmmEhMlAYYDtZHKZcgaTfO04nw9DYEymxWKkQzoxxTAfQeGKKgobyspdboTH8PkSXjq4un/RoaeKfjAT9HdCGVFuvpO/JRzewb6ze7wTET9ntWjDKoi8lFoPO09nrQCLsJ6cxLBgIZaGw/B5eFl6XBjfpmO/kfyNxQt9zHaM+Yn root@client
-root@client:~$
+ubuntu@client:~$
+ubuntu@client:~$ cat .ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4auR5Gxae2aHx0Sde69c1tJiFFWNx0DlAN+pJNkmT/wGyIfntMBWAL6qVrfJOSSFbmBu8crFQbI9Ouay+TsP2Ni0gVg1e9G8r6O4BCOsTD6N/vb/v3BZ7II/RsHoZC5mdiTySPuQTAM7dTxD7YpgMxUtUI+FyZqpaEKCcfB66LZmmEhMlAYYDtZHKZcgaTfO04nw9DYEymxWKkQzoxxTAfQeGKKgobyspdboTH8PkSXjq4un/RoaeKfjAT9HdCGVFuvpO/JRzewb6ze7wTET9ntWjDKoi8lFoPO09nrQCLsJ6cxLBgIZaGw/B5eFl6XBjfpmO/kfyNxQt9zHaM+Yn ubuntu@client
+ubuntu@client:~$
 ```
 
-Now put the genereted key the master and the workers with:
+Now put the genereted key the master and the workers with (IMPORTANT tou need to allow the client tu connect by ssh to the root account of the master and the workers):
 ```
 root@master:~$ mkdir ~/.ssh
 root@master:~$ echo "ID_RSA.PUB CLIENT" >> ~/.ssh/authorized_keys
@@ -59,17 +59,17 @@ root@master:~$ echo "ID_RSA.PUB CLIENT" >> ~/.ssh/authorized_keys
 In my example will be:
 ```
 root@master:~$ mkdir ~/.ssh
-root@master:~$ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4auR5Gxae2aHx0Sde69c1tJiFFWNx0DlAN+pJNkmT/wGyIfntMBWAL6qVrfJOSSFbmBu8crFQbI9Ouay+TsP2Ni0gVg1e9G8r6O4BCOsTD6N/vb/v3BZ7II/RsHoZC5mdiTySPuQTAM7dTxD7YpgMxUtUI+FyZqpaEKCcfB66LZmmEhMlAYYDtZHKZcgaTfO04nw9DYEymxWKkQzoxxTAfQeGKKgobyspdboTH8PkSXjq4un/RoaeKfjAT9HdCGVFuvpO/JRzewb6ze7wTET9ntWjDKoi8lFoPO09nrQCLsJ6cxLBgIZaGw/B5eFl6XBjfpmO/kfyNxQt9zHaM+Yn root@client" >> ~/.ssh/authorized_keys
+root@master:~$ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4auR5Gxae2aHx0Sde69c1tJiFFWNx0DlAN+pJNkmT/wGyIfntMBWAL6qVrfJOSSFbmBu8crFQbI9Ouay+TsP2Ni0gVg1e9G8r6O4BCOsTD6N/vb/v3BZ7II/RsHoZC5mdiTySPuQTAM7dTxD7YpgMxUtUI+FyZqpaEKCcfB66LZmmEhMlAYYDtZHKZcgaTfO04nw9DYEymxWKkQzoxxTAfQeGKKgobyspdboTH8PkSXjq4un/RoaeKfjAT9HdCGVFuvpO/JRzewb6ze7wTET9ntWjDKoi8lFoPO09nrQCLsJ6cxLBgIZaGw/B5eFl6XBjfpmO/kfyNxQt9zHaM+Yn ubuntu@client" >> ~/.ssh/authorized_keys
 ```
 
 ```
 root@worker1:~$ mkdir ~/.ssh
-root@worker1:~$ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4auR5Gxae2aHx0Sde69c1tJiFFWNx0DlAN+pJNkmT/wGyIfntMBWAL6qVrfJOSSFbmBu8crFQbI9Ouay+TsP2Ni0gVg1e9G8r6O4BCOsTD6N/vb/v3BZ7II/RsHoZC5mdiTySPuQTAM7dTxD7YpgMxUtUI+FyZqpaEKCcfB66LZmmEhMlAYYDtZHKZcgaTfO04nw9DYEymxWKkQzoxxTAfQeGKKgobyspdboTH8PkSXjq4un/RoaeKfjAT9HdCGVFuvpO/JRzewb6ze7wTET9ntWjDKoi8lFoPO09nrQCLsJ6cxLBgIZaGw/B5eFl6XBjfpmO/kfyNxQt9zHaM+Yn root@client" >> ~/.ssh/authorized_keys
+root@worker1:~$ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4auR5Gxae2aHx0Sde69c1tJiFFWNx0DlAN+pJNkmT/wGyIfntMBWAL6qVrfJOSSFbmBu8crFQbI9Ouay+TsP2Ni0gVg1e9G8r6O4BCOsTD6N/vb/v3BZ7II/RsHoZC5mdiTySPuQTAM7dTxD7YpgMxUtUI+FyZqpaEKCcfB66LZmmEhMlAYYDtZHKZcgaTfO04nw9DYEymxWKkQzoxxTAfQeGKKgobyspdboTH8PkSXjq4un/RoaeKfjAT9HdCGVFuvpO/JRzewb6ze7wTET9ntWjDKoi8lFoPO09nrQCLsJ6cxLBgIZaGw/B5eFl6XBjfpmO/kfyNxQt9zHaM+Yn ubuntu@client" >> ~/.ssh/authorized_keys
 ```
 
 ```
 root@worker2:~$ mkdir ~/.ssh
-root@worker2:~$ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4auR5Gxae2aHx0Sde69c1tJiFFWNx0DlAN+pJNkmT/wGyIfntMBWAL6qVrfJOSSFbmBu8crFQbI9Ouay+TsP2Ni0gVg1e9G8r6O4BCOsTD6N/vb/v3BZ7II/RsHoZC5mdiTySPuQTAM7dTxD7YpgMxUtUI+FyZqpaEKCcfB66LZmmEhMlAYYDtZHKZcgaTfO04nw9DYEymxWKkQzoxxTAfQeGKKgobyspdboTH8PkSXjq4un/RoaeKfjAT9HdCGVFuvpO/JRzewb6ze7wTET9ntWjDKoi8lFoPO09nrQCLsJ6cxLBgIZaGw/B5eFl6XBjfpmO/kfyNxQt9zHaM+Yn root@client" >> ~/.ssh/authorized_keys
+root@worker2:~$ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4auR5Gxae2aHx0Sde69c1tJiFFWNx0DlAN+pJNkmT/wGyIfntMBWAL6qVrfJOSSFbmBu8crFQbI9Ouay+TsP2Ni0gVg1e9G8r6O4BCOsTD6N/vb/v3BZ7II/RsHoZC5mdiTySPuQTAM7dTxD7YpgMxUtUI+FyZqpaEKCcfB66LZmmEhMlAYYDtZHKZcgaTfO04nw9DYEymxWKkQzoxxTAfQeGKKgobyspdboTH8PkSXjq4un/RoaeKfjAT9HdCGVFuvpO/JRzewb6ze7wTET9ntWjDKoi8lFoPO09nrQCLsJ6cxLBgIZaGw/B5eFl6XBjfpmO/kfyNxQt9zHaM+Yn ubuntu@client" >> ~/.ssh/authorized_keys
 ```
 
 
@@ -81,13 +81,13 @@ In my case:
 - worker2 is at: 172.16.66.94
 
 ```
-root@client:~$ ssh root@172.16.66.92 echo connected
+ubuntu@client:~$ ssh root@172.16.66.92 echo connected
 connected
-root@client:~$ ssh -J root@172.16.66.92 root@172.16.66.93 echo connected
+ubuntu@client:~$ ssh -J root@172.16.66.92 root@172.16.66.93 echo connected
 connected
-root@client:~$ ssh -J root@172.16.66.92 root@172.16.66.94 echo connected
+ubuntu@client:~$ ssh -J root@172.16.66.92 root@172.16.66.94 echo connected
 connected
-root@client:~$
+ubuntu@client:~$
 ```
 
 
@@ -222,16 +222,18 @@ root@master:~$ ansible all -m ping -u root
 In my example:
 
 ```
-root@client:~$ scp ~/Distrinet/mininet/mininet/provision/playbooks/install-lxd.yml root@172.16.66.92:         
-root@client:~$ scp ~/Distrinet/mininet/mininet/provision/playbooks/configure-lxd-no-clustering.yml  root@172.16.66.92:                                                                                                                                        100% 2903     6.5MB/s   00:00
-root@client:~$
+ubuntu@client:~$ scp ~/Distrinet/mininet/mininet/provision/playbooks/install-lxd.yml root@172.16.66.92:         
+ubuntu@client:~$ scp ~/Distrinet/mininet/mininet/provision/playbooks/configure-lxd-no-clustering.yml  root@172.16.66.92:                                                                                                                                        100% 2903     6.5MB/s   00:00
+ubuntu@client:~$
 ```
 
-Now run the playbooks with:
+Now run the playbooks in the master with :
 
-    ansible-playbook ~/install-lxd.yml
-    ansible-playbook ~/configure-lxd-no-clustering.yml
-        
+```
+root@master:~$ ansible-playbook ~/install-lxd.yml
+root@master:~$ ansible-playbook ~/configure-lxd-no-clustering.yml
+``` 
+
 Depending on your connection and your machines, it can take around 5 or 10 minutes.
 To check if the configuration is good, you can run:
 ```
@@ -274,7 +276,7 @@ Shared connection to 172.16.66.94 closed.
     
     
 8) You can run an experiment from your distrinet client; be sure to set correctly the user the master and the workers when you run the experiment
-The configuration file is at ~/.distrinet/conf.yml if you correctly installed distrinte in your client machine.
+The configuration file is at ~/.distrinet/conf.yml if you correctly installed distrinet in your client machine.
 You have to configure the "ssh" and "cluster" part. If you don't need aws, g5k or port forwarding you can remove the from the file.
 
     1) ssh-->pub_id: you have to put your public key(the one that you created in the client host). 
@@ -284,11 +286,13 @@ You have to configure the "ssh" and "cluster" part. If you don't need aws, g5k o
    
 In my case I can do :
 
-    ubuntu@client:~$ vim .distrinet/conf.yml
+```
+ubuntu@client:~$ vim .distrinet/conf.yml
+```
     
 The configuration file for the example is:
 ```
-root@client:~/Distrinet/mininet# cat ../../.distrinet/conf.yml
+ubuntu@client:~/Distrinet/mininet# cat ~/.distrinet/conf.yml
 ---
 
 ssh:
@@ -343,7 +347,7 @@ From your Distrinet client:
 
 In my case
 ```
-root@client:~/Distrinet/mininet# python3 bin/dmn --bastion=172.16.66.92 --workers="172.16.66.92,172.16.66.93,172.16.66.94" --controller=lxcremote,ip=192.168.0.1 --topo=linear,2
+ubuntu@client:~/Distrinet/mininet# python3 bin/dmn --bastion=172.16.66.92 --workers="172.16.66.92,172.16.66.93,172.16.66.94" --controller=lxcremote,ip=192.168.0.1 --topo=linear,2
 ``` 
     
 
@@ -353,10 +357,15 @@ Start ryu controller from your master host.
 ```
 
 In my case
+
+
 ```
 root@master:~# ryu-manager /usr/lib/python3/dist-packages/ryu/app/simple_switch_13.py --verbose
-```    
-6) After some seconds we are able to run pingall from mininet CLI.
-    ![alt text](images/pingall.png)
+```
+
+
+After some seconds we are able to run pingall from mininet CLI.
+
+![alt text](images/pingall.png)
  
 7) Type "exit" to conclude the experiment.
