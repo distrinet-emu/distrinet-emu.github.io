@@ -267,7 +267,7 @@ After some seconds we are able to run pingall from mininet CLI.
  You can destroy the virtual instances manually or using the command:
  
  ```
- python3 bin/dmn --provision=VPC_ID
+ python3 bin/dmn --purge=VPC_ID
 ```
 
 you can find the VPC_ID in AWS web interface:
