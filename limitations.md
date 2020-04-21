@@ -31,7 +31,7 @@ This can be a problem when the dpid is not directly set in the addSwitch() funct
 
 [Github discussion](https://github.com/Giuseppe1992/Distrinet/issues/50)
 
-##Os Supported
+## Os Supported
 For now we support Ubuntu 18.04 for the Master and the workers, while the client is compatible with any system using Docker.
 We are working to support more Linux Distributions.
 
