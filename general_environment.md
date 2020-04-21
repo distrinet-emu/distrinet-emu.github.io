@@ -51,7 +51,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4auR5Gxae2aHx0Sde69c1tJiFFWNx0DlAN+pJNkmT
 ubuntu@client:~$
 ```
 
-Now put the genereted key the master and the workers with (IMPORTANT tou need to allow the client tu connect by ssh to the root account of the master and the workers):
+Now put the generated public key in the master and the workers with: (IMPORTANT you need to allow the client tu connect by ssh to the root account of the master and the workers):
 ```
 root@master:~$ mkdir ~/.ssh
 root@master:~$ echo "ID_RSA.PUB CLIENT" >> ~/.ssh/authorized_keys
