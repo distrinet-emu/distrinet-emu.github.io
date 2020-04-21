@@ -234,6 +234,9 @@ root@master:~$ ansible-playbook ~/install-lxd.yml
 root@master:~$ ansible-playbook ~/configure-lxd-no-clustering.yml
 ``` 
 
+> **_NOTE:_** Debian 10 users must use `install-lxd-debian-10.yml` instead of `install-lxd.yml`.
+
+
 Depending on your connection and your machines, it can take around 5 or 10 minutes.
 To check if the configuration is good, you can run:
 ```
