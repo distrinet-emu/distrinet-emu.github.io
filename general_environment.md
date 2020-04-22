@@ -158,8 +158,11 @@ connected
 root@master:~$
 ```
 
-3) Install ansible on your Master Host.
-```
+3) Install ansible(version>=2.8) on your Master Host(if you are not root, add sudo at the beginning of each command).
+```bash
+root@master:~$ apt install software-properties-common -y
+root@master:~$ apt-add-repository ppa:ansible/ansible
+root@master:~$ apt update
 root@master:~$ apt install ansible -y
 ```
 
@@ -233,8 +236,6 @@ Now run the playbooks in the master with :
 root@master:~$ ansible-playbook ~/install-lxd.yml
 root@master:~$ ansible-playbook ~/configure-lxd-no-clustering.yml
 ``` 
-
-> **_NOTE:_** Debian 10 users must use `install-lxd-debian-10.yml` instead of `install-lxd.yml`.
 
 
 Depending on your connection and your machines, it can take around 5 or 10 minutes.
