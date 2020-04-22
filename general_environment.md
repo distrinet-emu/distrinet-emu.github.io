@@ -158,13 +158,23 @@ connected
 root@master:~$
 ```
 
-3) Install ansible(version>=2.8) on your Master Host(if you are not root, add sudo at the beginning of each command).
+3) Install ansible on your Master Host(if you are not root, add sudo at the beginning of each command).
+
+> **_NOTE:_** Ubuntu snap users must install ansible(version>=2.8) on the Master host. For that they must provide ansible repository with the latest version as follows.
+> ``` bash
+> root@master:~$ apt-add-repository ppa:ansible/ansible
+> root@master:~$ apt update
+> ```
+> Other users shall not add the external repository.
+
+Install ansible as follows
+
 ```bash
 root@master:~$ apt install software-properties-common -y
-root@master:~$ apt-add-repository ppa:ansible/ansible
-root@master:~$ apt update
 root@master:~$ apt install ansible -y
 ```
+
+Then for all users.
 
 Configure ansible in your Master:
 ```
@@ -237,6 +247,9 @@ root@master:~$ ansible-playbook ~/install-lxd.yml
 root@master:~$ ansible-playbook ~/configure-lxd-no-clustering.yml
 ``` 
 
+> **_NOTE:_** Debian 10 users must use `install-lxd-debian-10.yml` instead of `install-lxd.yml`.
+
+> **_NOTE:_** Ubuntu snap users must use `install-lxd-snap.yml` instead of `install-lxd.yml`.
 
 Depending on your connection and your machines, it can take around 5 or 10 minutes.
 To check if the configuration is good, you can run:
