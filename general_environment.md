@@ -158,8 +158,11 @@ connected
 root@master:~$
 ```
 
-3) Install ansible on your Master Host.
-```
+3) Install ansible(version>=2.8) on your Master Host(if you are not root, add sudo at the beginning of each command).
+```bash
+root@master:~$ apt install software-properties-common -y
+root@master:~$ apt-add-repository ppa:ansible/ansible
+root@master:~$ apt update
 root@master:~$ apt install ansible -y
 ```
 
