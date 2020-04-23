@@ -14,7 +14,7 @@ nav_order: 4
 
 You need to have Distrinet installed and configured.
 
-#Installing a new package in the vHost image.
+# Installing a new package in the vHost image.
 Check that all the hosts have the images installed
 ```bash
 root@master:~# ansible all -m raw -a "lxc image ls"
