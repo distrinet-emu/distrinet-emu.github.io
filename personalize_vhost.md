@@ -14,7 +14,7 @@ nav_order: 4
 
 You need to have Distrinet installed and configured.
 
-#Installing a new package in the vHost image.
+# Installing a new package in the vHost image.
 Check that all the hosts have the images installed
 ```bash
 root@master:~# ansible all -m raw -a "lxc image ls"
@@ -45,7 +45,7 @@ root@master:~# lxc network create inetbr ipv6.address=none ipv4.address=10.0.10.
 
 create a file that describe a new profile that attach the containet to the new network
 ```bash
-vim inet.profile
+vim profile.conf
 ```
 Put the following lines in the file and save
 ```bash
