@@ -12,7 +12,19 @@ nav_order: 4
 
 # Prerequisites
 
-You need to have Distrinet installed and configured.
+You need to have Distrinet installed and configured. The master host is connected to the Internet.
+
+> **_NOTE:_**
+>
+> Any Ubuntu or Debian based container should work with Distrinet, providing that it offers the following:
+> - It has a listening SSHv2 server that allows root login with key authentication;
+> - The root home directory is `/root`.
+> - The `telnet` command is installed;
+> - Net-tools is installed;
+>
+> Optionnally the container should have the following packages installed:
+> - iputils-ping
+> - iperf 2
 
 # Installing a new package in the vHost image.
 Check that all the hosts have the images installed
@@ -38,16 +50,15 @@ root@master:~# ansible all -m raw -a "lxc image ls"
 Shared connection to 10.0.1.110 closed.
 ```
 
-Create a new network that allow the container to connect to the external network
+Create a new network that allows the container to connect to the external network
 ```bash
 root@master:~# lxc network create inetbr ipv6.address=none ipv4.address=10.0.10.1/24 ipv4.nat=true
 ```
-
-create a file that describe a new profile that attach the containet to the new network
+create a file that describes a new profile that attaches the container to the new network
 ```bash
 vim profile.conf
 ```
-Put the following lines in the file and save
+Put the following lines in the file and save it
 ```bash
 config: {}
 description: inet  profile
@@ -64,13 +75,13 @@ devices:
 name: inet
 used_by: []
 ```
-Create the new profile and edit with the profile.conf file
+Create the new profile and edit it with the profile.conf file
 ```bash
 root@master:~# lxc profile create inet 
 root@master:~# lxc profile edit inet < profile.conf
 ```
 
-Create a container with the basic ubuntu image, using the new profile
+Create a container with the basic Distrinet ubuntu image, using the new profile
 ```bash
 root@master:~# lxc launch ubuntu new-ubuntu --profile inet
 ```
@@ -85,6 +96,19 @@ root@new-ubuntu:~# INSTALL AND CONFIGURE YOUR APPLICATIONS
 ...
 root@new-ubuntu:~# exit
 ```
+
+
+> **_NOTE:_**
+> If you use another image than the one provided by Distrinet, make sure that required dependencies are installed and configured properly.
+> The following example shows how to make a Debian 10 image from a vanilla Debian 10 LXC image.
+>
+> ```bash
+> root@master:~# lxc launch images:debian/buster debian10 --profile inet
+> root@master:~# lxc exec debian10 -- bash
+> root@debian10:~# apt update -y && apt install -y net-tools iputils-ping inetutils-telnet iperf openssh-server
+> root@debian10:~# exit
+> ```
+
 Stop the updated container
 ```bash
 root@master:~# lxc stop new-ubuntu
