@@ -102,7 +102,7 @@ If you see the image "distrinet:1.1" everything is fine. Now we can create the c
 docker container run -it --name distrinet distrinet:1.1
 ```
 You can check that it is correctly installed with:
-```
+```bash
 giuseppe@MacBook-Pro-di-Giuseppe Distrinet % docker container run -it --name distrinet distrinet:1.1
 root@30363028511c:/Distrinet# cd ~/.distrinet/
 root@30363028511c:~/.distrinet# ls -al
