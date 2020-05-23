@@ -86,10 +86,10 @@ class Linear10(Topo):
 
 # These are the additional parameters used By Distrinet
 #################################################################
-physical_hosts_ips = ["172.16.66.90", "172.16.66.91"]
-public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDN+7brU3dYYrMLrjO3+MAO7xGQATwA47FfzIxxjOkbpuP7zCOGSuJK1g9fRkPK5psygtlbGsklTgGqfRntTNU0rK9u7KSFy4+WwCAQ1gKHDRjKjNrvpgqt9994SnqIBd8B8nTAP6YriOdrsLCLOfZZR17iL63KQlmeEl5/Rpitj6RcSaY4Xkmozg8eH7hBVaVoA6tCGelUHe+xYPJ+YJN/v13Qprb49ngPSweX/BhCQ1QiXtNlsVI1YI0Y5QoZbeSlUgj/e8gVYnBSXN788xEs/W3n3EM+PcWAUoayg0NZlfbmBG65/jgNlQruD/zEiXyO9JclCAcsQttplTQXQ1a/ giuseppe@eduroam-249a.sophia.inria.fr"
-private_key_path = "/Users/giuseppe/.ssh/id_rsa"
-master = "172.16.66.90"
+physical_hosts_ips = ["Master_IP", "Worker_1IP"]
+public_key = "YOUR id_rsa.pub"
+private_key_path = "/path/to/your/id_rsa"
+master = "Master_IP"
 jump = master # tipically the same of Master, in a cloud environment, jump is the public ip, and the master IP is the private one
 user = "root" # the username used to connect with the machines
 ##################################################################
