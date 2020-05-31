@@ -4,7 +4,7 @@ parent: Examples
 nav_order: 3
 ---
 
-This is a Mininet example creating s Linear 10 Topology
+This is a Mininet example creating a Linear 10 Topology
 
 ```python
 from mininet.topo import Topo
@@ -47,7 +47,7 @@ CLI(net)
 net.stop()
 ```
 
-here is how you adapt the script for Distrinet
+Here is how you adapt the script for Distrinet
 
 ```python
 from mininet.topo import Topo
@@ -90,15 +90,15 @@ physical_hosts_ips = ["Master_IP", "Worker_1IP"]
 public_key = "YOUR id_rsa.pub"
 private_key_path = "/path/to/your/id_rsa"
 master = "Master_IP"
-jump = master # tipically the same of Master, in a cloud environment, jump is the public ip, and the master IP is the private one
+jump = master # Tipically the same as Master, in a cloud environment, jump is the public ip, and the master IP is the private one
 user = "root" # the username used to connect with the machines
 ##################################################################
 topo = Linear10(100)
-mapper = RoundRobinMapper(topo, physical_hosts_ips) # Create a Mapper, for the distribution of the vNodes
+mapper = RoundRobinMapper(topo, physical_hosts_ips) # Create a Mapper for the distribution of the vNodes
 default_images(topo=topo)
 net = Distrinet(topo=topo, link=CloudLink, switch=LxcOVSSwitch, build=False, controller=LxcRemoteController,
                 mapper=mapper, user=user, master=master, jump=jump, client_keys=private_key_path, pub_id=public_key)
-# From here you can use mininet API
+# From here the API of Mininet can be used
 net.build()
 net.start()
 # Run the CLI
