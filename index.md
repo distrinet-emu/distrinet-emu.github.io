@@ -33,7 +33,7 @@ Distrinet can be used in a large variety of experimental infrastructures (e.g., 
 
 ## Linux clusters
 
-Distrinet is composed of three elements, a *client node* executing the experiment script, a *master node* managing the experimental infrastructure, and *slave nodes* running the actual experiment.
+Distrinet is composed of three elements, a *client node* executing the experiment script, a *master node* managing the experimental infrastructure, and *worker nodes* running the actual experiment.
 
 <p align="center">
     <img src="images/architecture.png" alt="" width="50%" height="50%"/>
