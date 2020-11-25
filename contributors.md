@@ -12,8 +12,8 @@ Below is a list of people (in alphabetical order) who contributed to this projec
 | Di Lena Giuseppe  | *Inria Sophia Antipolis & Orange Labs, France*          |
 | Giroire Frédéric  | *CNRS, France*                                          |
 | Lac Chidung       | *Orange Labs, France*                                   |
-| Saucez Damien     |                                                         |
-| Tomassilli Andrea | *Université Côte d'Azur, Inria Sophia Antipolis, France*|
+| Saucez Damien     | *Inria Sophia Antipolis, France*                                                        |
+| Tomassilli Andrea | *Sky, London, UK*|
 | Turletti Thierry  | *Université Côte d'Azur, Inria Sophia Antipolis, France*|
 
 # Mantainers
