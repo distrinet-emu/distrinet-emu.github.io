@@ -18,10 +18,10 @@ In order to successfully install and run Distrinet, ensure your system meets the
 # Configuration
 Distrinet requires one master and at least one worker.
 Distrinet client should be able to connect by ssh to the master and the master should be able to connect to the workers.
-We are using ubuntu 18.04 for this tutorial.
+We are using Ubuntu 18.04 for this tutorial.
 
 
-1) Generate a ssh keypair (if you don't have one) in your Distrinet Client and put the public id in ~/.ssh/authorized_keys file of the master host and the worker hosts.
+1) Generate a ssh keypair (if you don't have one) in your Distrinet client and put the public id in ~/.ssh/authorized_keys file of the master host and the worker hosts.
 ```
 ubuntu@client:~$ ssh-keygen
 Generating public/private rsa key pair.
@@ -51,12 +51,12 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4auR5Gxae2aHx0Sde69c1tJiFFWNx0DlAN+pJNkmT
 ubuntu@client:~$
 ```
 
-Now put the generated public key in the master and the workers with: (IMPORTANT you need to allow the client tu connect by ssh to the root account of the master and the workers):
+Now put the generated public key in the master and the workers with (IMPORTANT: you need to allow the client to connect by ssh to the root account of the master and the workers):
 ```
 root@master:~$ mkdir ~/.ssh
 root@master:~$ echo "ID_RSA.PUB CLIENT" >> ~/.ssh/authorized_keys
 ```
-In my example will be:
+Example:
 ```
 root@master:~$ mkdir ~/.ssh
 root@master:~$ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4auR5Gxae2aHx0Sde69c1tJiFFWNx0DlAN+pJNkmT/wGyIfntMBWAL6qVrfJOSSFbmBu8crFQbI9Ouay+TsP2Ni0gVg1e9G8r6O4BCOsTD6N/vb/v3BZ7II/RsHoZC5mdiTySPuQTAM7dTxD7YpgMxUtUI+FyZqpaEKCcfB66LZmmEhMlAYYDtZHKZcgaTfO04nw9DYEymxWKkQzoxxTAfQeGKKgobyspdboTH8PkSXjq4un/RoaeKfjAT9HdCGVFuvpO/JRzewb6ze7wTET9ntWjDKoi8lFoPO09nrQCLsJ6cxLBgIZaGw/B5eFl6XBjfpmO/kfyNxQt9zHaM+Yn ubuntu@client" >> ~/.ssh/authorized_keys
@@ -76,9 +76,9 @@ root@worker2:~$ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4auR5Gxae2aHx0Sde69
 To check that the configuration is ok, try to connect via ssh to the master and the hosts;
 
 In my case: 
-- master is at: 172.16.66.92
-- worker1 is at: 172.16.66.93
-- worker2 is at: 172.16.66.94
+- the master is at: 172.16.66.92
+- the worker1 is at: 172.16.66.93
+- the worker2 is at: 172.16.66.94
 
 ```
 ubuntu@client:~$ ssh root@172.16.66.92 echo connected
@@ -91,7 +91,7 @@ ubuntu@client:~$
 ```
 
 
-2) Generate a ssh keypair in your Master and put the public id in ~/.ssh/authorized_keys file of master host and the worker hosts.
+2) Generate a ssh keypair in your master and put the public id in ~/.ssh/authorized_keys file of the master host and the worker hosts.
 
 ```
 root@master:~$ ssh-keygen
@@ -119,13 +119,13 @@ root@master:~$ cat .ssh/id_rsa.pub
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC1tw/qqr3qY+wHKZJw4d5uATiOsar1UCdUxG3RHYShodscvRcnWtt5Z2MR71549n8UL7WDqpLnGqBD+IamI0E6gqS0EOhiy+tBx5JesIfllEbMrPN98qZk7p6fjD7fnU/FCucUoVhRpw417YFMUzNOqNYCntWxXGDt6grGpzzwoKlyGMo9XZKUBaL0yjjGRaIN970wEte3nhW6CGeJprN7kVxxr3qpPuhuIk2ANWJk+xYls+lCcq13qAYsnXeDz1wfAwx5uB2aJHg0ETgq8FjWhh8qHlRBzq/StlHlPVwpsR81/TV9Oba7yDQLtXPPJpcqfP+DPURoUWr9NWaAVIvh root@master
 ```
 
-Now put the genereted key the master and the workers with:
+Now put the generated key in the master and the workers with:
 ```
 root@master:~$ mkdir ~/.ssh
 root@master:~$ echo "ID_RSA.PUB MASTER" >> ~/.ssh/authorized_keys
 ```
 
-In my example will be:
+Example:
 ```
 root@master:~$ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC1tw/qqr3qY+wHKZJw4d5uATiOsar1UCdUxG3RHYShodscvRcnWtt5Z2MR71549n8UL7WDqpLnGqBD+IamI0E6gqS0EOhiy+tBx5JesIfllEbMrPN98qZk7p6fjD7fnU/FCucUoVhRpw417YFMUzNOqNYCntWxXGDt6grGpzzwoKlyGMo9XZKUBaL0yjjGRaIN970wEte3nhW6CGeJprN7kVxxr3qpPuhuIk2ANWJk+xYls+lCcq13qAYsnXeDz1wfAwx5uB2aJHg0ETgq8FjWhh8qHlRBzq/StlHlPVwpsR81/TV9Oba7yDQLtXPPJpcqfP+DPURoUWr9NWaAVIvh root@master" >> ~/.ssh/authorized_keys
 ```
@@ -158,16 +158,16 @@ connected
 root@master:~$
 ```
 
-3) Install ansible on your Master Host(if you are not root, add sudo at the beginning of each command).
+3) Install Ansible on your master host (if you are not root, add sudo at the beginning of each command).
 
-> **_NOTE:_** Ubuntu snap users must install ansible(version>=2.8) on the Master host. For that they must provide ansible repository with the latest version as follows.
+> **_NOTE:_** Ubuntu snap users must install Ansible (version>=2.8) on the master host. For this purpose, Ansible repository must be provided with the latest version as follows.
 > ``` bash
 > root@master:~$ apt-add-repository ppa:ansible/ansible
 > root@master:~$ apt update
 > ```
 > Other users shall not add the external repository.
 
-Install ansible as follows
+Install Ansible as follows
 
 ```bash
 root@master:~$ apt install software-properties-common -y
@@ -176,7 +176,7 @@ root@master:~$ apt install ansible -y
 
 Then for all users.
 
-Configure ansible in your Master:
+Configure Ansible in your master:
 ```
     1) vim /etc/ansible/hosts
     2) add the following lines
@@ -190,7 +190,7 @@ Configure ansible in your Master:
     
     WORKER_IP ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_python_interpreter=/usr/bin/python3
 ```
-In my example the file is this:
+Example
 ```
 Selecting previously unselected package python-libcloud.
 # This is the default ansible 'hosts' file.
@@ -205,7 +205,7 @@ Selecting previously unselected package python-libcloud.
 172.16.66.93 ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_python_interpreter=/usr/bin/python3
 172.16.66.94 ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_python_interpreter=/usr/bin/python3
 ```
-5) check your ansible configuration:
+5) Check your Ansible configuration:
 ```
 ansible all -m ping -u root
 
@@ -226,13 +226,13 @@ root@master:~$ ansible all -m ping -u root
 }
 ```
 
-6) copy the file install-lxd.yml and configure-lxd-no-clustering.yml in your master
+6) Copy the file install-lxd.yml and configure-lxd-no-clustering.yml in your master
 
     
     scp ~/Distrinet/mininet/mininet/provision/playbooks/install-lxd.yml USER@MASTER_IP:
     scp ~/Distrinet/mininet/mininet/provision/playbooks/configure-lxd-no-clustering.yml USER@MASTER_IP:
     
-In my example:
+Example:
 
 ```
 ubuntu@client:~$ scp ~/Distrinet/mininet/mininet/provision/playbooks/install-lxd.yml root@172.16.66.92:         
@@ -247,12 +247,12 @@ root@master:~$ ansible-playbook ~/install-lxd.yml
 root@master:~$ ansible-playbook ~/configure-lxd-no-clustering.yml
 ``` 
 
-> **_NOTE:_** Debian 10 users must use `install-lxd-debian-10.yml` instead of `install-lxd.yml`.
+> **_NOTE 1:_** Debian 10 users must use `install-lxd-debian-10.yml` instead of `install-lxd.yml`.
 
-> **_NOTE:_** Ubuntu snap users must use `install-lxd-snap.yml` instead of `install-lxd.yml`.
+> **_NOTE 2:_** Ubuntu snap users must use `install-lxd-snap.yml` instead of `install-lxd.yml`.
 
 Depending on your connection and your machines, it can take around 5 or 10 minutes.
-To check if the configuration is good, you can run:
+To check if the configuration is ok, you can run:
 ```
 root@master:~$ ansible all -u root -m raw -a "lxc image ls"
 
@@ -292,16 +292,16 @@ Shared connection to 172.16.66.94 closed.
 ```
     
     
-8) You can run an experiment from your distrinet client; be sure to set correctly the user the master and the workers when you run the experiment
-The configuration file is at ~/.distrinet/conf.yml if you correctly installed distrinet in your client machine.
-You have to configure the "ssh" and "cluster" part. If you don't need aws, g5k or port forwarding you can remove the from the file.
+8) You can run an experiment from your Distrinet client. Be sure to set correctly the user, the master and the workers when you run the experiment.
+The configuration file is at ~/.distrinet/conf.yml if you have installed correctly Distrinet in your client machine.
+You have to configure the "ssh" and "cluster" part. If you don't need aws, g5k or port forwarding you can remove it from the file.
 
-    1) ssh-->pub_id: you have to put your public key(the one that you created in the client host). 
-    2) ssh-->user: the user that you use to connec to with the master and the slaves (use root for this version of distrinet).
-    3) ssh-->client_keys: the path of the private key
-    4) sss-->bastion: this is optional, is the default ip of your master host
+    1) ssh-->pub_id: you have to put your public key(the one that you created in the client host), 
+    2) ssh-->user: the user that you use to connec to with the master and the slaves (use root for this version of distrinet),
+    3) ssh-->client_keys: the path of the private key,
+    4) sss-->bastion: this is optional, is the default ip of your master host.
    
-In my case I can do :
+In our case :
 
 ```
 ubuntu@client:~$ vim .distrinet/conf.yml
@@ -346,10 +346,10 @@ mapper:
   cloud_instances_prices: "PATH TO JSON FILE (do not include .json)"
 
 ```
-After the configuration you can start your first experiment.
+After the configuration, you can start your first experiment.
 From your Distrinet client:
 
-- Go in your Distrinet/mininet directory
+- Go to your Distrinet/mininet directory
 ```
     cd ~/Distrinet/mininet
 ```
@@ -357,23 +357,23 @@ From your Distrinet client:
 ```    
     export PYTHONPATH=$PYTHONPATH:mininet:
 ```    
-- run a simple experiment:
+- Run a simple experiment:
 ``` 
     python3 bin/dmn --bastion=MASTER_IP --workers="MASTER_IP,WORKER1_IP,WORKER2_IP" --controller=lxcremote,ip=192.168.0.1 --topo=linear,2
 ```     
 
-In my case
+In our case
 ```
 ubuntu@client:~/Distrinet/mininet# python3 bin/dmn --bastion=172.16.66.92 --workers="172.16.66.92,172.16.66.93,172.16.66.94" --controller=lxcremote,ip=192.168.0.1 --topo=linear,2
 ``` 
     
 
-Start ryu controller from your master host.
+Start the ryu controller from your master host.
 ```
     ryu-manager /usr/lib/python3/dist-packages/ryu/app/simple_switch_13.py --verbose
 ```
 
-In my case
+In our case
 
 
 ```
@@ -381,7 +381,7 @@ root@master:~# ryu-manager /usr/lib/python3/dist-packages/ryu/app/simple_switch_
 ```
 
 
-After some seconds we are able to run pingall from mininet CLI.
+After some seconds, we are able to run pingall from the Mininet CLI.
 
 ![alt text](images/pingall.png)
  
