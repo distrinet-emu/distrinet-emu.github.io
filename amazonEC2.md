@@ -225,43 +225,43 @@ To run a simple experiment in AWS.
 ```
 python3 bin/dmn --provision=aws --controller=lxcremote,ip=192.168.0.1 --mapper=ffod
 ```
-the available mapper in aws are: ffod, ffdp or bfdp
+The available mapper in aws are: ffod, ffdp or bfdp
 
-Distrinet in this case do not start automatically the controller, so you need to start manually in the master host.
-You can find the master host ip from AWS web interface.
+Distrinet, in this case, does not start automatically the controller, so you need to start it manually in the master host.
+You can find the master host ip from the AWS web interface.
 
-After five minutes you shoul see the mininet console. Don't worry about the error that you see
+After five minutes, you should see the Mininet console. Don't worry about the error that you see.
 ![alt text](images/Console.png)
-If you try to do pingall or pingallfull, the host will not be able to ping, this because there is no controller connected.
+If you try to do pingall or pingallfull, the host will not be able to ping. This is because there is no controller connected.
 
-Find the public ip of your deployment with AWS web interface.
+Find the public ip of your deployment with the AWS web interface.
  ![alt text](images/Public_ip.png)
 
-In this case we can connect with:
+In this case, we can connect with:
 ```
 ssh root@3.124.70.157
 ```
 
-Once connected we can start ryu controller:
+Once connected, we can start the ryu controller:
 ```
 ryu-manager /usr/lib/python2.7/dist-packages/ryu/app/simple_switch_13.py --verbose
 ```
 
-After some seconds we are able to run pingall from mininet CLI.
+After some seconds, we are able to run pingall from the Mininet CLI.
  ![alt text](images/pingall.png)
  
  Type "exit" to conclude the experiment.
  
-# Warning READ CAREFULLY
+# Warning: to read carefully 
  
- Exit distrinet will not remove your Aws environment,so you will continue to pay for the instances you created.
- You can destroy the virtual instances manually or using the command:
+ Exiting distrinet will not remove your AWS environment,so you will continue to pay for the instances you created.
+ You can destroy the virtual instances manually or by using the command:
  
  ```
  python3 bin/dmn --purge=VPC_ID
 ```
 
-you can find the VPC_ID in AWS web interface:
+The VPC_ID can be found in the AWS web interface: 
  ![alt text](images/vpc_id.png)
  ```
  python3 bin/dmn --purge=vpc-0d2b22e1d217cc26e

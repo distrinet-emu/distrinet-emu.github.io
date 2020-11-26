@@ -4,7 +4,7 @@ parent: Examples
 nav_order: 1
 ---
 
-Create a personalized topology is very simple if you  are used in Mininet.
+Create a personalized topology is very simple if you are used to Mininet.
 
 ```python
 from mininet.topo import Topo

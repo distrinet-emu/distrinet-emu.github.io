@@ -17,10 +17,10 @@ You need to have Distrinet installed and configured. The master host is connecte
 > **_NOTE:_**
 >
 > Any Ubuntu or Debian based container should work with Distrinet, providing that it offers the following:
-> - It has a listening SSHv2 server that allows root login with key authentication;
-> - The root home directory is `/root`.
-> - The `telnet` command is installed;
-> - Net-tools is installed;
+> - It has a listening SSHv2 server that allows root login with key authentication,
+> - The root home directory is `/root`,
+> - The `telnet` command is installed,
+> - Net-tools is installed.
 >
 > Optionnally the container should have the following packages installed:
 > - iputils-ping
@@ -54,7 +54,7 @@ Create a new network that allows the container to connect to the external networ
 ```bash
 root@master:~# lxc network create inetbr ipv6.address=none ipv4.address=10.0.10.1/24 ipv4.nat=true
 ```
-create a file that describes a new profile that attaches the container to the new network
+Create a file that describes a new profile that attaches the container to the new network
 ```bash
 vim profile.conf
 ```
@@ -85,7 +85,7 @@ Create a container with the basic Distrinet ubuntu image, using the new profile
 ```bash
 root@master:~# lxc launch ubuntu new-ubuntu --profile inet
 ```
-Access inside the container
+Access to the container
 ```bash
 root@master:~# lxc exec new-ubuntu -- bash
 ```
@@ -120,7 +120,7 @@ root@master:~# lxc publish new-ubuntu --alias new-ubuntu
 Container published with fingerprint: 73fa4e3f21dc9acd1bdc76228d39fe1d40880e32c425f78b3c950e8d2010b138
 ```
 
-Check that the container is correcly published
+Check that the container is correctly published
 ```bash
 root@master:~# lxc image ls
 +------------+--------------+--------+------------------------------------+--------+----------+------------------------------+
@@ -134,7 +134,7 @@ root@master:~# lxc image ls
 +------------+--------------+--------+------------------------------------+--------+----------+------------------------------+
 ```
 
-Export The container and check that is correctly exported in the .tar.gz
+Export the container and check that it is correctly exported in the .tar.gz
 ```bash
 root@master:~# lxc image export new-ubuntu new-ubuntu
 Image exported successfully!
@@ -174,13 +174,13 @@ root@ip-10-0-0-247:~# ansible all -m copy -a "src=new-ubuntu.tar.gz dest=new-ubu
     "uid": 0
 }
 ```
-Clean the image DB in all the hosts(to avoid hash collisions)
+Clean the image DB in all hosts (to avoid hash collisions)
 ```bash
 root@master:~# lxc image delete new-ubuntu
 root@master:~# ansible all -m raw -a "lxc image delete ubuntu"
 ```
 
-Import the new image in all the machines.
+Import the new image in all machines.
 ```bash
 root@master:~# ansible all -m raw -a "lxc image import new-ubuntu.tar.gz --alias ubuntu --public"
 10.0.1.110 | CHANGED | rc=0 >>

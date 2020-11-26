@@ -6,20 +6,20 @@ nav_order: 2
 
 # Hadoop Benchmarck
 
-For hadoop benchmark, you need the images of the hadoop master and worker.
+For Hadoop benchmark, you need the images of the Hadoop master and worker.
 
 ## Prepare the Master/Workers
-Connect to you Master host and download the new images with:
+Connect to your Master host and download the new images with:
 
 ```bash
 root@master:~# cd ~
 root@master:~# wget http://www-sop.inria.fr/members/Damien.Saucez/images/ubuntu-hadoop-slave.tar.gz
 root@master:~# wget http://www-sop.inria.fr/members/Damien.Saucez/images/ubuntu-hadoop-master.tar.gz
 ```
-The images are quite big, so if you don't have a good connection you have to wait a bit.
+The images are quite big, so if you don't have a good connection you have to wait a little bit.
 
 
-You can distribute the new images in the workers with ansible
+You can distribute the new images in the workers with Ansible
 
 ```bash
 root@master:~# cd ~
