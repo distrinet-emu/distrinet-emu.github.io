@@ -47,7 +47,7 @@ CLI(net)
 net.stop()
 ```
 
-Here is how you adapt the script for Distrinet
+Here is how you can adapt the script for Distrinet
 
 ```python
 from mininet.topo import Topo

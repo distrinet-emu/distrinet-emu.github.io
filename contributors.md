@@ -16,9 +16,9 @@ Below is a list of people (in alphabetical order) who contributed to this projec
 | Tomassilli Andrea | *Sky, London, UK*|
 | Turletti Thierry  | *Université Côte d'Azur, Inria Sophia Antipolis, France*|
 
-# Mantainers
+# Maintainers
 
-If you have any queries about the code feel free to file a github issue.  
+If you have any queries about the code feel free to file a GitHub issue.  
 Alternatively, you can reach out to us via email.
 
 - [Giuseppe Di Lena](mailto:giuseppe.di-lena@inria.fr)  
