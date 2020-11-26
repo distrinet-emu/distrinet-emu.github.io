@@ -12,17 +12,16 @@ nav_order: 2
 
 # Prerequisites
 
-In order to successfully install and run Distrinet on Amazon EC2, ensure your system meets the requirements described in this section.
-Distrinet is compatible with python 3.6 or grater versions.
+In order to install and run Distrinet on Amazon EC2, ensure your system meets the requirements described in this section. Distrinet is compatible with python 3.6 or greater versions.
 
-You need:
-* Distrinet installed in your machine (or in docker), if not please follow these [instructions](https://distrinet-emu.github.io/installation.html)
-* an Amazon AWS account [link](https://aws.amazon.com/)
-* a text editor, in this case we use vim
+What is needed:
+* Distrinet installed on the machine (or in Docker), if not please follow these [instructions](https://distrinet-emu.github.io/installation.html),
+* an Amazon AWS account [link](https://aws.amazon.com/),
+* a text editor - vim is used in our case.
 
-# AWS Configuration
-You need to put your AWS Credentials in ~/.aws/credentials.
-You can create your aws_access_key_id and aws_secret_access_key from the [AWS Web interface](https://aws.amazon.com/)
+# AWS configuration
+The AWS credentials have to be provided in ~/.aws/credentials.
+You can create your aws_access_key_id and aws_secret_access_key from the [AWS Web interface](https://aws.amazon.com/):
 ```
 mkdir ~/.aws
 vim ~/.aws/credentials
@@ -35,7 +34,7 @@ aws_access_key_id=XXXXXXXXXXXXXXXXX
 aws_secret_access_key=YYYYYYYYYYYYYYYYYYYYYY
 ```
 
-## Create aws_access_key_id and aws_secret_access_key via [AWS Web interface](https://aws.amazon.com/):
+## Create aws_access_key_id and aws_secret_access_key via [AWS Web interface](https://aws.amazon.com/)
 
 * Go to https://aws.amazon.com/ and log in
 ![alt text](images/Step1.png)
@@ -43,23 +42,23 @@ aws_secret_access_key=YYYYYYYYYYYYYYYYYYYYYY
 * Click on your username and go to "My security Credentials"
 ![alt text](images/Step2.png)
 
-* On the left pannel click on "Users" and then click on your User(be sure that it has the right permissions)
+* On the left panel, click on "Users" and then click on your User name(be sure that it has the right permissions)
 ![alt text](images/Step3.png)
 
-* On Summary pannel Click on "Create access Key"
+* On the summary, panel click on "Create access key"
 ![alt text](images/Step4.png)
 
-* Congratulation, you have a new Access Key ID and a Secret access key 
+* Congratulations: you have a new Access Key ID and a Secret access key 
 ![alt text](images/Step5.png)
 
-* you need to import you ssh public key in AWS
+* You need to import your ssh public key in AWS
 
-if you dont have a private and public key created in your system you can generate it with:
+If you don't have a private and public key created in your system, you can generate it with:
 ```
 ssh-keygen
 ```
 
-for this version you need to leave the default values like here:
+For this version, you need to leave the default values as shown below
 ```bat
 root@53942a77d770:# ssh-keygen
 Generating public/private rsa key pair.
@@ -85,34 +84,34 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
-* cat your id_rsa.pub (make sure that the extension is .pub)
+* Cat your id_rsa.pub (make sure that the extension is .pub)
 ```
 root@53942a77d770:/home/Distrinet# cat ~/.ssh/id_rsa.pub
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCsLyI2hW/uoiLqcJEnAnYufUge1LhnBevdVy29tI1r93KFcQrspE2LwuwWhVxtC4QdhIIcZ1nfN5zTIWhOkIUXEc3oZcu/JEMix+ygJXoW53/6gKC/hPqZPT+d2ahyoXw+zYqOjBp3VjhHG32jfQE5oGhU3nSTVrdPj3BEnJJ0o4WHyLiwRxv5z2aATS7b0ziYU2f3Zwdf3s+zJ54Ois6/c6TtTGI0B8p2zr4CrsK5pCaUnlW0/sgOsS98wAP1NjxDxPUak2cr8ZbMA7TWLUXO11HAZaW2qgqxImsg90Wf4RQkX5GesmTglSl0W/t3Jg+3Q4idX4PgRzPl4GAMvJp7 root@53942a77d770
 ```
 
-## import  your id_rsa.pub in AWS:
-* Go to https://aws.amazon.com/ and log in like before;
+## Import  the id_rsa.pub in AWS:
+* Go to https://aws.amazon.com/ and log as shown above
 ![alt text](images/Step1.png)
 
-* Go on "Services" --> "EC2"
+* Go to "Services" --> "EC2"
 ![alt text](images/Key1.png)
 
-* Click on "Key pairs"
+* Click on "Key Pairs"
 ![alt text](images/Key2.png)
 
-* "Import Key pair"
+* •	Choose "Import Key Pair"
 ![alt text](images/Key3.png)
 
-* Choose the name that you want, in my case I chose "DistrinetKeyGiuseppe"(you need to use this name after) and paste your id_rsa.pub in "Public key contents" and Import it.
+* Choose any name you want -  in my case I chose "DistrinetKeyGiuseppe"(you need to use this name after) - paste your id_rsa.pub in "Public key contents" and import it.
 ![alt text](images/Key4.png)
 
-* You can seen now that your key has been added
+* You can see now that your key has been added
 ![alt text](images/Key5.png)
 
-# Distrinet Configuration
+# Distrinet configuration
 
-If you correctly installed distrinet, you have a configuration file in your home directory.
+If Distrinet is installed correctly, you have a configuration file is in your home directory.
 You can open it with:
 ```
 vim ~/.distrinet/conf.yml
@@ -158,12 +157,12 @@ cluster:
   user: "root"
 ```
 
-You have to modify 3 parameters for now:
-* ssh -> pub_id: you have to put same public key that you import in AWS in the previous step
-* ssh -> client_keys: you have to put in a list, the path of your private key
+Three parameters need to be modified now:
+* ssh -> pub_id: you have to put the same public key that you imported in AWS in the previous step,
+* ssh -> client_keys: you have to put in a list the path of your private key,
 * aws -> key_name_aws: here you have to put the keypair name you choose in the previous step.
 
-following the previous AWS Configuration, my configuration file is:
+Following the previous AWS configuration, my configuration file is:
 
 ```
 
@@ -204,15 +203,15 @@ cluster:
   user: "root"
 ```
 
-## Test your configuration
+## Configuration test
 
-To run your first experiment, you need to move in mininet directory inside Distrinet.
-In this case Distrinet is in /Distrinet, so we can change directory with:
+To run your first experiment, you need to move in the Mininet directory inside Distrinet.
+In this case, Distrinet is in /Distrinet, so we can change directory with:
 ```
 cd /Distrinet/mininet
 ```
 
-if Distrinet is in your Home directory you can do:
+If Distrinet is in your Home directory you can do:
 ```
 cd ~/Distrinet/mininet
 ```
@@ -222,7 +221,7 @@ Make sure to have the :mininet: in your PYTHONPATH:
 export PYTHONPATH=$PYTHONPATH:mininet:
 ```
 
-run a simple experiment in AWS.
+To run a simple experiment in AWS.
 ```
 python3 bin/dmn --provision=aws --controller=lxcremote,ip=192.168.0.1
 ```
