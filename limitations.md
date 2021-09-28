@@ -38,5 +38,8 @@ For now we support Ubuntu 18.04/20.04 and Debian10 for the Master and the worker
 
 We are working to support more Linux distributions.
 
+## High number of virtual nodes
+For high number of nodes, make sure that LXD is configured in [Production setup](https://linuxcontainers.org/lxd/docs/master/production-setup)
+Otherwise the maximum number of containers (vNodes) in a single host cannot be more the 12.
 
 
